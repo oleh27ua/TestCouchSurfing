@@ -11,7 +11,6 @@ const GoogleOneTapLogin = () => {
   const handleResponse = (response) => {
     const token = response.credential;
     const decodedToken = jwtDecode(token);
-    console.log(decodedToken);
     const { sub: id, email, name, picture: photoURL } = decodedToken;
     dispatch({
       type: 'UPDATE_USER',
