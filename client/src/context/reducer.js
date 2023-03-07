@@ -75,6 +75,9 @@ const reducer = (state, action) => {
         filteredRooms: state.rooms,
       };
 
+    case 'UPDATE_ROOM':
+      return { ...state, room: action.payload };
+
     default:
       throw new Error('No matched action!');
   }
@@ -87,8 +90,8 @@ const applyFilter = (rooms, address, price) => {
   if (address) {
     const { lng, lat } = address;
     filteredRooms = filteredRooms.filter((room) => {
-      const lngDifference = lng > room.lng ? lng - room.lng : room.lng - lng;
-      const latDifference = lat > room.lat ? lat - room.lat : room.lat - lat;
+      const lngDifference = Math.abs(lng - room.lng);
+      const latDifference = Math.abs(lat - room.lat);
       return lngDifference <= 1 && latDifference <= 1;
     });
   }
