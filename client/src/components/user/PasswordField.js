@@ -19,7 +19,6 @@ const PasswordField = ({
 
   return (
     <TextField
-      autoFocus
       margin="normal"
       variant="standard"
       id={id}
@@ -33,7 +32,7 @@ const PasswordField = ({
         endAdornment: (
           <InputAdornment position="end">
             <IconButton onClick={handleClick} onMouseDown={handleMouseDown}>
-              {showPassword ? <VisibilityOff /> : <Visibility />}
+              {showPassword ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
         ),
